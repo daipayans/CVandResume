@@ -1,0 +1,14 @@
+#!/bin/bash
+
+proc="$1"
+gpuid="$2"
+
+export namd2='/net/kihara/home/sarkar30/Software/NAMD_Git-2019-10-03_Linux-x86_64-multicore-CUDA/namd2'
+
+$namd2 +p${proc} +devices ${gpuid} Step1.Hydration.inp &> Step1.Hydration.log 
+$namd2 +p${proc} +devices ${gpuid} Step2.1.Relax.inp &> Step2.1.Relax.log 
+$namd2 +p${proc} +devices ${gpuid} Step2.2.Relax.inp &> Step2.2.Relax.log 
+$namd2 +p${proc} +devices ${gpuid} Step2.3.Relax.inp &> Step2.3.Relax.log
+$namd2 +p${proc} +devices ${gpuid} Step2.4.Relax.inp &> Step2.4.Relax.log 
+$namd2 +p${proc} +devices ${gpuid} Step2.5.Relax.inp &> Step2.5.Relax.log 
+$namd2 +p${proc} +devices ${gpuid} Step3.Refine.inp &> Step3.Refine.log 

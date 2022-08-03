@@ -1,0 +1,3 @@
+#!/bin/bash
+
+awk '{print $2 " " $7 " " $8 " " $9}' <(grep CA ionized.pdb) > CA-initial.txt
